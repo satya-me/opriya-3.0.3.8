@@ -1,0 +1,45 @@
+{# <div class="swiper-viewport">
+  <div id="banner{{ module }}" class="swiper-container">
+    <div class="swiper-wrapper">
+      {% for banner in banners %}
+        <div class="swiper-slide">
+          {% if banner.link %}
+            <a href="{{ banner.link }}"><img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive" /></a>
+          {% else %}
+            <img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive" />
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<script type="text/javascript"><!--
+$('#banner{{ module }}').swiper({
+	effect: 'fade',
+	autoplay: 2500,
+    autoplayDisableOnInteraction: false
+});
+--></script> #}
+
+<div class="wpb_revslider_element wpb_content_element no-margin">
+  <div class="vc_column-inner">
+    <div class="wpb_wrapper">
+      <div class="wpb_revslider_element wpb_content_element">
+        <div id="main-slider" class="fullwidthbanner-container" style="position:relative; width:100%; height:auto; margin-top:0px; margin-bottom:0px; border: 1px solid lavenderblush;">
+          <div class="module slideshow no-margin">
+            {% for banner in banners %}
+              <div class="item">
+                {% if banner.link %}
+                  <a href="{{ banner.link }}"><img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive" /></a>
+                {% else %}
+                  <a href="javascript:void(0);"><img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive" /></a>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+          <div class="loadeding"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

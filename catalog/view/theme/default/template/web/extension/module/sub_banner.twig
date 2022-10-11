@@ -1,0 +1,21 @@
+{% for banner in banners %}
+
+  {% if banner.link %}
+    <div class="wpb_single_image wpb_content_element vc_align_center margin-bottom-15" style="border: 1px solid lavenderblush;">
+      <figure class="wpb_wrapper vc_figure">
+        <a href="{{ banner.link }}" target="_self " class="vc_single_image-wrapper vc_box_border_grey">
+          <img class="vc_single_image-img" src="{{ banner.image }}" alt="{{ banner.title }}" title="{{ banner.title }}" />
+        </a>
+      </figure>
+    </div>
+  {% else %}
+
+    <div class="wpb_single_image wpb_content_element vc_align_center margin-bottom-15" style="border: 1px solid lavenderblush;">
+      <figure class="wpb_wrapper vc_figure">
+        <a href="javascript:void(0);" target="_self " class="vc_single_image-wrapper vc_box_border_grey">
+          <img class="vc_single_image-img" src="{{ banner.image }}" alt="{{ banner.title }}" title="{{ banner.title }}" />
+        </a>
+      </figure>
+    </div>
+  {% endif %}
+{% endfor %}

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<title>My Account - Premium Multipurpose HTML5/CSS3 Theme</title>
+		<meta charset="utf-8"/>
+
+		<meta
+		name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+		<!-- FAVICONS -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{assets}}icons/apple-touch-icon-144-precomposed.png"/>
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{assets}}icons/apple-touch-icon-114-precomposed.png"/>
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{assets}}icons/apple-touch-icon-72-precomposed.png"/>
+		<link rel="apple-touch-icon-precomposed" href="{{assets}}icons/apple-touch-icon-57-precomposed.png"/>
+		<link
+		rel="shortcut icon" href="{{assets}}icons/favicon.png"/>
+
+		<!-- GOOGLE WEB FONTS -->
+		<link
+		rel="stylesheet" href="{{assets}}css/font-awesome.min.css">
+
+		<!-- BOOTSTRAP 3.3.7 CSS -->
+		<link
+		rel="stylesheet" href="{{assets}}css/bootstrap.min.css"/>
+
+		<!-- SLICK v1.6.0 CSS -->
+		<link rel="stylesheet" href="{{assets}}css/slick-1.6.0/slick.css"/>
+
+		<link rel="stylesheet" href="{{assets}}css/jquery.fancybox.css"/>
+		<link rel="stylesheet" href="{{assets}}css/yith-woocommerce-compare/colorbox.css"/>
+		<link rel="stylesheet" href="{{assets}}css/owl-carousel/owl.carousel.min.css"/>
+		<link rel="stylesheet" href="{{assets}}css/owl-carousel/owl.theme.default.min.css"/>
+		<link rel="stylesheet" href="{{assets}}css/js_composer/js_composer.min.css"/>
+		<link rel="stylesheet" href="{{assets}}css/woocommerce/woocommerce.css"/>
+		<link rel="stylesheet" href="{{assets}}css/yith-woocommerce-wishlist/style.css"/>
+
+
+		<link rel="stylesheet" href="{{assets}}css/custom.css"/>
+		<link rel="stylesheet" href="{{assets}}css/app-orange.css" id="theme_color"/>
+		<link rel="stylesheet" href="{{assets}}" id="rtl"/>
+		<link rel="stylesheet" href="{{assets}}css/app-responsive.css"/>
+	</head>
+	<style>
+		html,
+		body {
+			width: 100%;
+			height: 100%;
+		}
+
+		.registerWrapper {
+			display: none;
+		}
+
+		.jcc {
+			justify-content: center;
+		}
+
+		.aic {
+			align-items: center;
+		}
+
+		.wrapper_log {
+			/*min-width: 500px;*/
+		}
+
+		/*.mr-3 {
+			margin-right: 1rem;
+		}
+*/
+		.link {
+			cursor: pointer;
+		}
+
+		.d-none {
+			display: none !important;
+		}
+
+		.d-block {
+			display: block !important;
+		}
+
+		.card {
+			box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+			/*padding: 1rem;*/
+		}
+
+		a,
+		b {
+			color: red;
+		}
+.padding_top{
+padding: 2rem 0
+}
+.entry-content{
+	max-width:500px;
+	width:100%;
+	margin:0 auto;
+
+}
+
+.padding_all{
+	padding: 0 2rem;
+}.woocommerce-account .addresses .title:after, .woocommerce-account .addresses .title:before, .woocommerce-account .woocommerce:after, .woocommerce-account .woocommerce:before{
+	display:none;
+}
+
+	</style>
+
+	<body class="page woocommerce-account woocommerce-page h-100 w-100 ">
+
+		<div class="entry-content">
+			<div class="d-flex jcc">
+				<a href="{{ home }}">
+					<img src="{{assets}}images/logos/logo-index3.png" alt="">
+				</a>
+			</div>
+			<div class="woocommerce card mt-4">
+				<div class="wrapper_log padding_all" id="customer_login">
+					<div class="loginWrapper" id="loginWrapper">
+						<div class="text-center padding_top">
+							<h2>Register</h2>
+						</div>
+						<form action="{{ action }}" method="post" enctype="multipart/form-data" class="login">
+							<p class="form-row form-row-wide">
+								<label for="input-firstname">
+									{{ entry_firstname }}
+									<span class="required">*</span>
+								</label>
+
+								{# <input type="text" class="input-text" name="username" id="username" /> #}
+								<input type="text" name="firstname" value="{{ firstname }}" placeholder="{{ entry_firstname }}" id="input-firstname" class="form-control">
+								{% if error_firstname %}
+									<div class="text-danger">{{ error_firstname }}</div>
+								{% endif %}
+							</p>
+
+							<p class="form-row form-row-wide">
+								<label for="password">
+								{{ entry_lastname }}
+									<span class="required">*</span>
+								</label>
+
+								{# <input class="input-text" type="password" name="password" id="password" /> #}
+								<input type="text" name="lastname" value="{{ lastname }}" placeholder="{{ entry_lastname }}" id="input-lastname" class="form-control">
+								{% if error_lastname %}
+									<div class="text-danger">{{ error_lastname }}</div>
+								{% endif %}
+							</p>
+
+							<p class="form-row form-row-wide">
+								<label for="password">
+								{{ entry_email }}
+									<span class="required">*</span>
+								</label>
+
+								{# <input class="input-text" type="password" name="password" id="password" /> #}
+								<input type="email" name="email" value="{{ email }}" placeholder="{{ entry_email }}" id="input-email" class="form-control">
+								{% if error_email %}
+									<div class="text-danger">{{ error_email }}</div>
+								{% endif %}
+							</p>
+
+							<p class="form-row form-row-wide">
+								<label for="password">
+								{{ entry_telephone }}
+									<span class="required">*</span>
+								</label>
+
+								{# <input class="input-text" type="password" name="password" id="password" /> #}
+								<input type="tel" name="telephone" value="{{ telephone }}" placeholder="{{ entry_telephone }}" id="input-telephone" class="form-control">
+								{% if error_telephone %}
+									<div class="text-danger">{{ error_telephone }}</div>
+								{% endif %}
+							</p>
+							<hr/>
+							<p class="form-row form-row-wide">
+								<label for="password">
+									Password
+									<span class="required">*</span>
+								</label>
+
+								{# <input class="input-text" type="password" name="password" id="password" /> #}
+								<input type="password" name="password" value="{{ password }}" placeholder="{{ entry_password }}" id="input-password" class="form-control">
+								{% if error_password %}
+									<div class="text-danger">{{ error_password }}</div>
+								{% endif %}
+							</p>
+							<p class="form-row form-row-wide">
+								<label for="password">
+									Password
+									<span class="required">*</span>
+								</label>
+
+								{# <input class="input-text" type="password" name="password" id="password" /> #}
+								<input type="password" name="confirm" value="{{ confirm }}" placeholder="{{ entry_confirm }}" id="input-confirm" class="form-control">
+								{% if error_confirm %}
+									<div class="text-danger">{{ error_confirm }}</div>
+								{% endif %}
+							</p>
+
+							{# <p class="form-row">
+															<label for="rememberme" class="inline">
+																<input name="rememberme" type="checkbox" id="rememberme" value="forever"/>
+																Remember me
+															</label>
+														</p>
+							
+														<p class="form-row">
+															<input type="submit" class="button" value="{{ button_continue }}"/>
+														</p> #}
+
+							{{ captcha }}
+							{% if text_agree %}
+								{% if agree %}
+									<p class="form-row">
+										<label for="rememberme" class="inline">
+											<input name="rememberme" type="checkbox" id="rememberme" value="forever"/>
+											{{text_agree}}
+										</label>
+									</p>
+								{% else %}
+									<p class="form-row">
+										<label for="rememberme" class="inline">
+											<input name="rememberme" type="checkbox" id="rememberme" value="forever"/>
+											{{text_agree}}
+										</label>
+									</p>
+								{% endif %}
+								&nbsp;
+								<p class="form-row">
+									<input type="submit" class="button" value="{{ button_continue }}"/>
+								</p>
+
+							{% else %}
+								<p class="form-row">
+									<input type="submit" class="button" value="{{ button_continue }}"/>
+								</p>
+							{% endif %}
+						</form>
+						<div class="d-flex jcc">
+							<p class="mb-0 mr-3">I have account ?</p>
+							<a href="{{ login }}">
+								<p class="mb-0 text-primary ml-3 link">Login</p>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- DIALOGS -->
+
+
+		<script type="text/javascript">
+			/* <![CDATA[ */
+var wc_password_strength_meter_params = {
+"min_password_strength": "3",
+"i18n_password_error": "Please enter a stronger password.",
+"i18n_password_hint": "The password should be at least seven characters long. To make it stronger, use upper and lower case letters, numbers and symbols like ! \" ? $ % ^ & )."
+};
+var pwsL10n = {
+"unknown": "Password strength unknown",
+"short": "Very weak",
+"bad": "Weak",
+"good": "Medium",
+"strong": "Strong",
+"mismatch": "Mismatch"
+};
+/* ]]> */
+		</script>
+
+		<script type="text/javascript" src="{{assets}}js/jquery/jquery.min.js"></script>
+		<script type="text/javascript" src="{{assets}}js/jquery/jquery-migrate.min.js"></script>
+		<script type="text/javascript" src="{{assets}}js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="{{assets}}js/jquery/js.cookie.min.js"></script>
+		<script type="text/javascript" src="{{assets}}js/zxcvbn.min.js"></script>
+
+		<!-- OPEN LIBS JS -->
+		<script type="text/javascript" src="{{assets}}js/owl-carousel/owl.carousel.min.js"></script>
+		<script type="text/javascript" src="{{assets}}js/slick-1.6.0/slick.min.js"></script>
+
+		<script type="text/javascript" src="{{assets}}js/yith-woocommerce-compare/jquery.colorbox-min.js"></script>
+		<script type="text/javascript" src="{{assets}}js/isotope/isotope.js"></script>
+		<script type="text/javascript" src="{{assets}}js/fancybox/jquery.fancybox.pack.js"></script>
+		<script type="text/javascript" src="{{assets}}js/sw_woocommerce/category-ajax.js"></script>
+		<script type="text/javascript" src="{{assets}}js/sw_woocommerce/jquery.countdown.min.js"></script>
+		<script type="text/javascript" src="{{assets}}js/wp-admin/password-strength-meter.min.js"></script>
+		<script type="text/javascript" src="{{assets}}js/woocommerce/password-strength-meter.min.js"></script>
+		<script type="text/javascript" src="{{assets}}js/js_composer/js_composer_front.min.js"></script>
+
+		<script type="text/javascript" src="{{assets}}js/plugins.js"></script>
+		<script type="text/javascript" src="{{assets}}js/megamenu.min.js"></script>
+		<script type="text/javascript" src="{{assets}}js/main.min.js"></script>
+
+		<script type="text/javascript">
+			var sticky_navigation_offset_top = $("#header .header-bottom").offset().top;
+var sticky_navigation = function () {
+var scroll_top = $(window).scrollTop();
+if (scroll_top > sticky_navigation_offset_top) {
+$("#header .header-bottom").addClass("sticky-menu");
+$("#header .header-bottom").css({"top": 0, "left": 0, "right": 0});
+} else {
+$("#header .header-bottom").removeClass("sticky-menu");
+}
+};
+sticky_navigation();
+$(window).scroll(function () {
+sticky_navigation();
+});
+
+$(document).ready(function () {
+$(".show-dropdown").each(function () {
+$(this).on("click", function () {
+$(this).toggleClass("show");
+var $element = $(this).parent().find("> ul");
+$element.toggle(300);
+});
+});
+});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,102 @@
+{{ header }}
+<div class="pts-container container">
+    <ul class="pts-breadcrumb breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+            <li class="breadcrumb-item">
+                <a href="{{ breadcrumb.href }}">
+                    {{ breadcrumb.text }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    {% if success %}
+        <div class="alert pts-alert-success">
+            <i class="fa fa-check-circle"></i>
+            {{ success }}
+        </div>
+    {% endif %}
+    {% if error_warning %}
+        <div class="alert alert-danger">
+            <i class="fa fa-exclamation-circle"></i>
+            {{ error_warning }}
+        </div>
+    {% endif %}
+    <div class="pts-row d-flex row">
+        {{ column_left }}
+        {% if column_left and column_right %}
+            {% set class = 'pts-col-sm-6 col-sm-6' %}
+        {% elseif column_left or column_right %}
+            {% set class = 'pts-col-sm-9 col-sm-9' %}
+        {% else %}
+            {% set class = 'pts-col-sm-12 col-sm-12' %}
+        {% endif %}
+        <div id="content" class="{{ class }}">
+            {{ content_top }}
+            <h1>
+                {{ heading_title }}
+            </h1>
+            <div class="message-area">
+                <!-- chatbox -->
+                <div class="chatbox">
+                    <div class="modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="msg-body" id="messages_container">
+                                    <ul>
+                                        {% for key,result in messages %}
+                                            <tr class="pts-tr-hover-none">
+                                                {% if result.contact_from == 0 %}
+                                                    <li class="repaly">
+                                                        <p>
+                                                            {{ result.message }}
+                                                        </p>
+                                                        <span class="time">
+                                                            {{ result.created_at }}
+                                                        </span>
+                                                    </li>
+                                                {% else %}
+                                                    <li class="sender">
+                                                        <p>
+                                                            {{ result.message }}
+                                                        </p>
+                                                        <span class="time">
+                                                            {{ result.created_at }}
+                                                        </span>
+                                                    </li>
+                                                {% endif %}
+                                            </tr>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="send-box">
+                                <form action="" method="post" enctype="multipart/form-data" class="pts-form-horizontal">
+                                    <textarea name="message" class="form-control" placeholder="Type You Message.."></textarea>
+                                    <input type="hidden" name="seller_id" value="{{ seller_id }}" />
+                                    {% if error_msg %}
+                                        <div class="text-danger">
+                                            {{ error_msg }}
+                                        </div>
+                                    {% endif %}
+                                    <button type="submit" value="{{ button_continue }}">
+                                        <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- chatbox -->
+    </div>
+   
+    {{ content_bottom }}
+</div>
+{{ column_right }}</div></div>
+<script type="text/javascript">
+
+var objDiv = document.getElementById("messages_container");
+objDiv.scrollTop = objDiv.scrollHeight;
+</script>
+{{ footer }}

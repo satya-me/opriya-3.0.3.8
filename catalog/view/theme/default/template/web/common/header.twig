@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Opriya</title>
+    <meta charset="utf-8" />
+    <base href="{{ base }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- FAVICONS -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{assets}}images/icons/india.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{assets}}images/icons/india.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{assets}}images/icons/india.png" />
+    <link rel="apple-touch-icon-precomposed" href="{{assets}}images/icons/india.png" />
+    <link rel="shortcut icon" href="{{assets}}images/icons/india.png" />
+
+    <link href="catalog/view/javascript/purpletree/jquery/datetimepicker/bootstrap-datetimepicker.min.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="catalog/view/javascript/purpletree/codemirror/lib/codemirror.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="catalog/view/javascript/purpletree/codemirror/theme/monokai.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="catalog/view/javascript/purpletree/summernote/summernote.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="catalog/view/javascript/purpletree/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="catalog/view/theme/default/stylesheet/purpletree/custom.css" type="text/css" rel="stylesheet" media="screen" />
+    
+    <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <!-- GOOGLE WEB FONTS -->
+    <link rel="stylesheet" href="{{assets}}css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <!-- BOOTSTRAP 3.3.7 CSS -->
+    <link rel="stylesheet" href="{{assets}}css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="{{assets}}css/jquery.fancybox.css" />
+    <link rel="stylesheet" href="{{assets}}css/yith-woocommerce-compare/colorbox.css" />
+
+    <link rel="stylesheet" href="{{assets}}css/owl-carousel/owl.carousel.min.css" />
+    <link rel="stylesheet" href="{{assets}}css/owl-carousel/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="{{assets}}css/js_composer/js_composer.min.css" />
+    <link rel="stylesheet" href="{{assets}}css/woocommerce/woocommerce.css" />
+    <link rel="stylesheet" href="{{assets}}css/yith-woocommerce-wishlist/style.css" />
+
+
+    <link rel="stylesheet" href="{{assets}}css/custom.css" />
+    <link rel="stylesheet" href="{{assets}}css/app-orange.css" id="theme_color" />
+    <link rel="stylesheet" href="{{assets}}" id="rtl" />
+    <link rel="stylesheet" href="{{assets}}css/app-responsive.css" />
+    <script src="catalog/view/javascript/common2.js" type="text/javascript"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
+
+    
+
+
+
+<script src="catalog/view/javascript/purpletree_style.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/purpletree/jquery/datetimepicker/moment/moment.min.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/purpletree/jquery/datetimepicker/moment/moment-with-locales.min.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/purpletree/jquery/datetimepicker/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/purpletree/codemirror/lib/codemirror.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/purpletree/codemirror/lib/xml.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/purpletree/codemirror/lib/formatting.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/purpletree/summernote/summernote.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/purpletree/summernote/summernote-image-attributes.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/purpletree/summernote/opencart.js" type="text/javascript"></script>
+			<script src="catalog/view/javascript/purpletree/common.js" type="text/javascript"></script>
+    
+    
+    <script src="https://kit.fontawesome.com/dde7a70e93.js" crossorigin="anonymous"></script>
+    <style>
+        .dropbtn {
+            background-color: #04AA6D;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+
+<body class="page home-style3">
+    <div class="body-wrapper theme-clearfix">
+        <header id="header" class="header header-style3">
+            <div class="header-top clearfix">
+                <div class="container">
+                    <div class="rows">
+                        <!-- SIDEBAR TOP MENU -->
+                        <div class="pull-left top1 d-flex jcsb w-100 p-2">
+                            <div class="widget-inner">
+                                <div class="textwidget d-flex">
+                                    <h5 class="call-us personal_link mr-3"><a href="{{base}}index.php?route=web/common/home">Personal</a></h5>
+                                    <h5 class="call-us"><a
+                                            href="{{base}}index.php?route=web/extension/account/purpletree_multivendor/sellerlogin">Business</a>
+                                    </h5>
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="companylogo">
+                            <img src="{{base}}/admin/view/image/logo.png" alt="" class="img-responsive"/>
+                        </div>
+
+                            <div class="widget-inner d-flex align-items-center">
+                        
+                            <div class="d-flex aic">
+                            <div class="widget text-3 widget_text pull-left">
+                                <select name="" id="" class="form-select b-0">
+                                    <option value="0">English</option>
+                                    <option value="1">हिन्दी</option>
+                                </select>
+                            </div>
+
+                            <div class="ms-3">
+                                <img src="{{assets}}images/icons/india.png" class="header_flag" alt="">
+                            </div>
+                        </div>
+                        <div class="d-flex aic con_icon ">
+                    <a href="https://www.google.com/maps/place/Sector+V,+Bidhannagar,+Kolkata,+West+Bengal/@22.5763573,88.4252282,15z/data=!3m1!4b1!4m5!3m4!1s0x3a0275b020703c0d:0xece6f8e0fc2e1613!8m2!3d22.5735324!4d88.4331179" target="_blank"><i class="fa-solid fa-location-dot me-3 header_icons"></i></a>                 
+                   <a href="mailto:example@gmail.com"><i class="fa-regular fa-envelope me-3 header_icons"></i></a>
+                  <a href="tel:9785641235" ><i class="fa-solid fa-phone-flip header_icons"></i></a>
+               </div>
+                        </div>
+                         
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="header-bottom clearfix py-2">
+                <div class="container d-flex aic flex-wrap">
+                    <div class="rows me-4">
+                        <div class="vertical_megamenus vertical_megamenu-header verticle-menu-index pull-left">
+                            <h3 class="mobile_hide">Categories</h3>
+
+                            <div class="vc_wp_custommenu wpb_content_element">
+                                <div class="wrapper_vertical_menu vertical_megamenu">
+                                    <div class="resmenu-container">
+                                        <button class="navbar-toggle" type="button" data-toggle="collapse"
+                                            data-target="#ResMenuvertical_menu">
+                                            <span class="sr-only">Categories</span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        </button>
+
+                                        <div id="ResMenuvertical_menu" class="collapse menu-responsive-wrapper">
+                                            <ul id="menu-vertical-menu" class="etrostore_resmenu">
+                                                <li class="menu-computers-laptops">
+                                                    <a class="item-link" href="simple_product.html">Computers &
+                                                        Laptops</a>
+                                                </li>
+
+                                                <li class="fix-menu res-dropdown menu-smartphones-tablet">
+                                                    <a class="item-link dropdown-toggle"
+                                                        href="simple_product.html">Smartphones & Tablet</a>
+                                                    <span class="show-dropdown"></span>
+
+                                                    <ul class="dropdown-resmenu">
+                                                        <li class="res-dropdown menu-electronics">
+                                                            <a class="item-link dropdown-toggle"
+                                                                href="#">Electronics</a>
+                                                            <span class="show-dropdown"></span>
+
+                                                            <ul class="dropdown-resmenu">
+                                                                <li class="menu-laptop-desktop-accessories"><a
+                                                                        href="#">Laptop & Desktop Accessories</a></li>
+                                                                <li class="menu-storage-external-drives"><a
+                                                                        href="#">Storage & External Drives</a></li>
+                                                                <li class="menu-networking-wireless"><a
+                                                                        href="#">Networking & Wireless</a></li>
+                                                                <li class="menu-motherboards-cpus-psus"><a
+                                                                        href="#">Motherboards, CPUs & PSUs</a></li>
+                                                                <li class="menu-webcams"><a href="#">Webcams</a></li>
+                                                            </ul>
+                                                        </li>
+
+                                                        <li class="res-dropdown menu-smartphone">
+                                                            <a class="item-link dropdown-toggle" href="#">Smartphone</a>
+                                                            <span class="show-dropdown"></span>
+
+                                                            <ul class="dropdown-resmenu">
+                                                                <li class="menu-mobile-phones"><a href="#">Mobile
+                                                                        Phones</a></li>
+                                                                <li class="menu-smart-watches-accessories"><a
+                                                                        href="#">Smart Watches & Accessories</a></li>
+                                                                <li class="menu-mobile-accessories"><a href="#">Mobile
+                                                                        Accessories</a></li>
+                                                                <li class="menu-cases-covers"><a href="#">Cases &
+                                                                        Covers</a></li>
+                                                                <li class="menu-power-banks"><a href="#">Power Banks</a>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+
+                                                        <li class="res-dropdown menu-tablets">
+                                                            <a class="item-link dropdown-toggle" href="#">Tablets</a>
+                                                            <span class="show-dropdown"></span>
+
+                                                            <ul class="dropdown-resmenu">
+                                                                <li class="menu-tablet-accessories"><a href="#">Tablet
+                                                                        Accessories</a></li>
+                                                                <li class="menu-cases-covers"><a href="#">Cases &
+                                                                        Covers</a></li>
+                                                                <li class="menu-power-banks"><a href="#">Power Banks</a>
+                                                                </li>
+                                                                <li class="menu-memory-cards"><a href="#">Memory
+                                                                        Cards</a></li>
+                                                            </ul>
+                                                        </li>
+
+                                                        <li class="res-dropdown menu-computer">
+                                                            <a class="item-link dropdown-toggle" href="#">Computer</a>
+                                                            <span class="show-dropdown"></span>
+
+                                                            <ul class="dropdown-resmenu">
+                                                                <li class="menu-macbooks-imacs"><a href="#">Macbooks &
+                                                                        iMacs</a></li>
+                                                                <li class="menu-computers-desktops"><a
+                                                                        href="#">Computers & Desktops</a></li>
+                                                                <li class="menu-printers-scanners-faxs"><a
+                                                                        href="#">Printers, Scanners, & Faxs</a></li>
+                                                                <li class="menu-laptop-desktop-accessories"><a
+                                                                        href="#">Laptop & Desktop Accessories</a></li>
+                                                                <li class="menu-storage-external-drives"><a
+                                                                        href="#">Storage & External Drives</a></li>
+                                                            </ul>
+                                                        </li>
+
+                                                        <li class="fix-position res-dropdown menu-image">
+                                                            <a class="item-link dropdown-toggle" href="#">Image</a>
+                                                            <span class="show-dropdown"></span>
+
+                                                            <ul class="dropdown-resmenu">
+                                                                <li class="menu-image-1"><a href="#">Image 1</a></li>
+                                                                <li class="menu-image-2"><a href="#">Image 2</a></li>
+                                                                <li class="menu-image-3"><a href="#">Image 3</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+
+                                                <li class="menu-cameras-camcorders">
+                                                    <a class="item-link" href="simple_product.html">Cameras &
+                                                        Camcorders</a>
+                                                </li>
+
+                                                <li class="res-dropdown menu-electronic-component">
+                                                    <a class="item-link dropdown-toggle"
+                                                        href="simple_product.html">Electronic Component</a>
+                                                    <span class="show-dropdown"></span>
+
+                                                    <ul class="dropdown-resmenu">
+                                                        <li class="res-dropdown menu-electronics">
+                                                            <a class="item-link dropdown-toggle"
+                                                                href="#">Electronics</a>
+                                                            <span class="show-dropdown"></span>
+
+                                                            <ul class="dropdown-resmenu">
+                                                                <li class="menu-leds"><a href="#">Leds</a></li>
+                                                                <li class="menu-laptop-desktop-accessories"><a
+                                                                        href="#">Laptop & Desktop Accessories</a></li>
+                                                                <li class="menu-storage-external-drives"><a
+                                                                        href="#">Storage & External Drives</a></li>
+                                                                <li class="menu-networking-wireless"><a
+                                                                        href="#">Networking & Wireless</a></li>
+                                                                <li class="menu-motherboards-cpus-psus"><a
+                                                                        href="#">Motherboards, CPUs & PSUs</a></li>
+                                                                <li class="menu-webcams"><a href="#">Webcams</a></li>
+                                                                <li class="menu-gaming-mice"><a href="#">Gaming Mice</a>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+
+                                                        <li class="res-dropdown menu-smartphone">
+                                                            <a class="item-link dropdown-toggle" href="#">Smartphone</a>
+                                                            <span class="show-dropdown"></span>
+
+                                                            <ul class="dropdown-resmenu">
+                                                                <li class="menu-smartphones"><a href="#">Smartphones</a>
+                                                                </li>
+                                                                <li class="menu-mobile-phones"><a href="#">Mobile
+                                                                        Phones</a></li>
+                                                                <li class="menu-smart-watches-accessories"><a
+                                                                        href="#">Smart Watches & Accessories</a></li>
+                                                                <li class="menu-mobile-accessories"><a href="#">Mobile
+                                                                        Accessories</a></li>
+                                                                <li class="menu-cases-covers"><a href="#">Cases &
+                                                                        Covers</a></li>
+                                                                <li class="menu-power-banks"><a href="#">Power Banks</a>
+                                                                </li>
+                                                                <li class="menu-memory-cards"><a href="#">Memory
+                                                                        Cards</a></li>
+                                                            </ul>
+                                                        </li>
+
+                                                        <li class="res-dropdown menu-tablet">
+                                                            <a class="item-link dropdown-toggle" href="#">Tablet</a>
+                                                            <span class="show-dropdown"></span>
+
+                                                            <ul class="dropdown-resmenu">
+                                                                <li class="menu-tablets"><a href="#">Tablets</a></li>
+                                                                <li class="menu-tablet-accessories"><a href="#">Tablet
+                                                                        Accessories</a></li>
+                                                                <li class="menu-cases-covers"><a href="#">Cases &
+                                                                        Covers</a></li>
+                                                                <li class="menu-power-banks"><a href="#">Power Banks</a>
+                                                                </li>
+                                                                <li class="menu-memory-cards"><a href="#">Memory
+                                                                        Cards</a></li>
+                                                                <li class="menu-headphonesheadsets"><a
+                                                                        href="#">Headphones/Headsets</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+
+                                                <li class="menu-vacuum-cleaner">
+                                                    <a class="item-link" href="simple_product.html">Vacuum Cleaner</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <ul id="menu-vertical-menu-1"
+                                        class="nav vertical-megamenu etrostore-mega etrostore-menures">
+                                        {% for category in menu %}
+                                        {% if category.children %}
+                                        <li class="dropdown menu-electronic-component etrostore-mega-menu level1">
+
+                                            <a href="{{ category.href }}" class="item-link dropdown-toggle">
+                                                <span class="have-title" style="color: rgb(34, 34, 34);">
+                                                    <span class="menu-color" data-color="#f03442"
+                                                        style="background: rgb(240, 52, 66); width: 4px;"></span>
+                                                    <span class="menu-title">{{ category.name }}</span>
+                                                </span>
+                                            </a>
+                                            <ul class="dropdown-menu nav-level1 column-3">
+                                                <li
+                                                    class="dropdown-submenu column-3 menu-electronics etrostore-menu-img">
+                                                    {% for children in
+                                                    category.children|batch((category.children|length) /
+                                                    (category.column|round(1, 'ceil'))) %}
+                                                    <ul class="dropdown-sub nav-level2">
+                                                        {% for child in children %}
+                                                        <li class="menu-leds">
+                                                            <a href="{{ child.href }}"><span class="have-title"><span
+                                                                        class="menu-title">{{ child.name
+                                                                        }}</span></span></a>
+                                                        </li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                    {% endfor %}
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        {% else %}
+                                        <li class="menu-cameras-camcorders etrostore-menu-custom level1">
+                                            <a href="{{ category.href }}" class="item-link">
+                                                <span class="have-title" style="color: rgb(34, 34, 34);">
+                                                    <span class="menu-color" data-color="#fe9901"
+                                                        style="background: rgb(254, 153, 1); width: 4px;"></span>
+                                                    <span class="menu-title">{{ category.name }}</span>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {# <div class="mx-auto searchWrapper col">
+                        <form method="get" action="" class="d-flex aic">
+                            <input type="text" value="" name="s" class="searchInput form-control"
+                                placeholder="Keyword here...">
+                            <button type="submit" class="btn_theme search_btn mb-0">Search</button>
+                        </form>
+                    </div> #}
+                    {{search}}
+                    <div class="d-flex aic" style="width:70px">
+                        <div class="top-form top-form-minicart etrostore-minicart">
+                            <div class="dropdown" id="compare-head">
+                                {# <a href="{{shopping_cart}}">
+                                    <iconify-icon icon="eva:shopping-cart-fill" width="24" height="24"></iconify-icon>
+                                </a> #}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex aic" style="width:40px">
+                        <div class="top-form top-form-minicart etrostore-minicart">
+                            <div class="dropdown">
+                                <iconify-icon icon="bx:user" width="24" height="24"></iconify-icon>
+                                <div class="dropdown-content">
+                                    {% if logged %}
+                                    <a href="{{ account }}">{{ text_account }}</a>
+                                    <a href="{{ order }}">{{ text_order }}</a>
+                                    <a href="{{ transaction }}">{{ text_transaction }}</a>
+                                    <a href="{{ download }}">{{ text_download }}</a>
+                                    <a href="{{ logout }}">{{ text_logout }}</a>
+                                    {% else %}
+                                    {# <a href="{{ register }}">{{ text_register }}</a> #}
+                                    <a href="{{ login }}">{{ text_login }}</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex aic" style="width:40px">
+                        <div class="top-form top-form-minicart etrostore-minicart">
+                            <div class="dropdown">
+                                <a href="{{shopping_cart}}">
+                                    <iconify-icon icon="eva:shopping-cart-fill" width="24" height="24"></iconify-icon>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex aic" style="width:40px">
+                        <div class="top-form top-form-minicart etrostore-minicart">
+                            <div class="dropdown">
+                                <a href="{{wishlist}}">
+                                    <iconify-icon icon="clarity:heart-solid" width="24" height="24"></iconify-icon>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>

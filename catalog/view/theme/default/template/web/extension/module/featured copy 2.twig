@@ -1,0 +1,123 @@
+<div class="vc_row vc_row-fluid margin-bottom-30 mt-4">
+  <div class="vc_column_container vc_col-sm-12">
+    <div class="vc_column-inner ">
+      <div class="wpb_wrapper">
+        <div id="_sw_countdown_01" class=" product-images sw-woo-container-slider responsive-slider countdown-slider countdown-slider2" data-lg="5" data-md="4" data-sm="2" data-xs="1" data-mobile="1" data-speed="1000" data-scroll="1" data-interval="5000" data-autoplay="false" data-circle="false">
+          <div class="resp-slider-container slider_products">
+            <div class="box-title clearfix">
+              <h3>
+                {{heading_title}}
+                   
+              </h3>
+              <a href="#">
+                See all
+                              
+              </a>
+          
+            </div>
+
+            <div class="slider responsive">
+
+              {% for product in products %}
+                <div class="item-countdown product" id="product_sw_countdown_03">
+                  <div class="item-wrap">
+                    <div class="item-detail">
+                      <div class="item-content">
+                        
+
+                          <h4>
+                            <a href="{{ product.href }}" title="{{ product.name }}"> {{ product.name }}
+                          </a>
+                        </h4>
+                        {% if product.price %}
+                          <p class="price">
+                            {% if not product.special %}
+                              <del>{{ product.price }}</del>
+                            {% else %}
+                              <span class="price-new">
+                                {{ product.special }}
+                              </span>
+                              <span class="price-old">
+                                {{ product.price }}
+                              </span>
+                            {% endif %}
+                            {% if product.tax %}
+                              <span class="price-tax">
+                                {# {{ text_tax }} #}
+                                {{ product.tax }}
+                              </span>
+                            {% endif %}
+                          </p>
+                        {% endif %}
+                        <!-- end price -->
+
+                        {# <div class="sale-off">
+                          -10%
+                                                  
+                        </div> #}
+                      </div>
+
+                      <div class="item-image-countdown">
+                        <span class="onsale">
+                          Sale!
+                                                  
+                        </span>
+
+                        <a href="{{ product.href }}">
+                          <div class="product-thumb-hover">
+                            <img src="{{ product.thumb }}" class="attachment-shop_catalog size-shop_catalog wp-post-image hw_300" alt="" />
+                          </div>
+                        </a>
+
+                        <!-- add to cart, wishlist, compare -->
+                        <div class="item-bottom clearfix">
+                          <a rel="nofollow" onclick="cart.add('{{ product.product_id }}');" href="#" class="button product_type_simple add_to_cart_button ajax_add_to_cart" title="Add to Cart">
+                            Add to cart
+                                                      
+                          </a>
+
+                          <a href="javascript:void(0)" class="button" rel="nofollow" title="Add to Compare" onclick="compare.add('{{ product.product_id }}');">
+                            Compare
+                                                      
+                          </a>
+
+                          <div class="yith-wcwl-add-to-wishlist ">
+                            <div class="yith-wcwl-add-button show" style="display:block" onclick="wishlist.add('{{ product.product_id }}');">
+                              <a href="" onclick="wishlist.add('{{ product.product_id }}');" rel="nofollow" class="add_to_wishlist">
+                                Add to  Wishlist
+                                                              
+                              </a>
+                              <img src="{{ assets }}images/wpspin_light.gif" class="ajax-loading" alt="loading" width="16" height="16" style="visibility:hidden" />
+                            </div>
+
+                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
+                              <span class="feedback">
+                                Product added!
+                                                              
+                              </span>
+                            </div>
+
+                            <div style="clear:both"></div>
+                            <div class="yith-wcwl-wishlistaddresponse"></div>
+                          </div>
+
+                          <div class="clear"></div>
+                          {# <a href="ajax/fancybox/example.html" data-fancybox-type="ajax" class="sm_quickview_handler-list fancybox fancybox.ajax">
+                            Quick View 
+                                                      
+                          </a> #}
+                        </div>
+                      </div>
+
+                      <div class="product-countdown" data-date="1519776000" data-price="₹250" data-starttime="1483747200" data-cdtime="1519776000" data-id="product_sw_countdown_03"></div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+<html lang="en">
+
+    <body>
+        <div class="email_container">
+            <!-- 100% body table -->
+            <table cellspacing="0" border="0" cellpadding="0" width="100%" bgcolor="#f2f3f8" style="@import url(https://fonts.googleapis.com/css?family=Rubik:300,400,500,700|Open+Sans:300,400,600,700); font-family: 'Open Sans', sans-serif;">
+                <tr>
+                    <td>
+                        <table style="background-color: #f2f3f8; max-width:670px; margin:0 auto;" width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td style="height:80px;"></td>
+                            </tr>
+
+                            <tr>
+                                <td style="height:20px;"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" style="max-width:670px; background:#fff; border-radius:3px; text-align:center;-webkit-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);-moz-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);box-shadow:0 6px 18px 0 rgba(0,0,0,.06);">
+                                        <td style="text-align:center; padding: 2rem">
+                                            <a href="{{ home }}" title="logo" target="_blank">
+                                                <img src="{{ mail_logo }}" alt="logo" srcset="" width="200vw">
+                                            </a>
+                                        </td>
+                                        <tr>
+                                            <td style="height:40px;"></td>
+                                        </tr>
+                                        {% if not approval %}
+                                            <tr>
+                                                <td style="padding:0 35px;">
+                                                    <h1 style="color:#1e1e2d; font-weight:500; margin:0;font-size:32px;font-family:'Rubik',sans-serif;">
+                                                        {{ text_welcome }}
+                                                    </h1>
+                                                    <p style="font-size:15px; color:#455056; margin:8px 0 0; line-height:24px;">
+                                                        {{ text_login }}
+                                                    </p>
+
+                                                    <a href="{{ login }}" style="background:#e27120;text-decoration:none !important; display:inline-block; font-weight:500; margin-top:24px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;">
+                                                        {{ "Login to your Account" }}
+                                                    </a>
+                                                    <p style="font-size:15px; color:#455056; margin:8px 0 0; line-height:24px;">
+                                                        {{ text_service }}
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        {% else %}
+                                            <tr>
+                                                <td style="padding:0 35px;">
+                                                    <h1 style="color:#1e1e2d; font-weight:500; margin:0;font-size:32px;font-family:'Rubik',sans-serif;">
+                                                        {{ text_welcome }}
+                                                    </h1>
+                                                    <p style="font-size:15px; color:#455056; margin:8px 0 0; line-height:24px;">
+                                                        {{ text_service }}
+                                                    </p>
+
+                                                    <a href="{{ login }}" style="background:#e27120;text-decoration:none !important; display:inline-block; font-weight:500; margin-top:24px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;">
+                                                        {{ "Login to your Account" }}
+                                                    </a>
+
+                                                </td>
+                                            </tr>
+                                        {% endif %}
+                                        <tr>
+                                            <td style="padding:2rem 35px;">
+                                                <h1 style="color:#e27120; font-weight:500; margin:0;font-size:32px;font-family:'Rubik',sans-serif;">
+                                                    {{ text_thanks }}
+                                                    {{ store }}
+                                                </h1>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="height:40px;"></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height:20px;"></td>
+                            </tr>
+
+                            <tr>
+                                <td style="height:80px;"></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        <!--/100% body table-->
+        </div>
+    </body>
+</html>
