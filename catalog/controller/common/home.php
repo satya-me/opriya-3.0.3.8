@@ -35,6 +35,7 @@ class ControllerCommonHome extends Controller
         $data['column_right'] = $this->load->controller('web/common/column_right');
         $data['content_top'] = $this->load->controller('web/common/content_top');
         $data['content_bottom'] = $this->load->controller('web/common/content_bottom');
+        $data['content_sub_banner'] = $this->load->controller('web/common/content_sub_banner');
         $data['footer'] = $this->load->controller('web/common/footer');
         $data['header'] = $this->load->controller('web/common/header');
 

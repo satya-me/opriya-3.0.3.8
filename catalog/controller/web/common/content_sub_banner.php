@@ -10,6 +10,7 @@ class ControllerWebCommonContentSubBanner extends Controller
         } else {
             $route = 'common/home';
         }
+        // print_r($route);
 
         $layout_id = 0;
 
