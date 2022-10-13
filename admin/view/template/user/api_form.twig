@@ -28,6 +28,7 @@
             <li class="active"><a href="#tab-general" data-toggle="tab">{{ tab_general }}</a></li>
             <li><a href="#tab-ip" data-toggle="tab">{{ tab_ip }}</a></li>
             <li><a href="#tab-session" data-toggle="tab">{{ tab_session }}</a></li>
+            <li><a href="#tab-shiprocket" data-toggle="tab">{{ "Shiprocket" }}</a></li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab-general">
@@ -128,6 +129,24 @@
                     </tbody>
                   
                 </table>
+              </div>
+            </div>
+            <div class="tab-pane" id="tab-shiprocket">
+              <div class="form-group required">
+                <label class="col-sm-2 control-label" for="input-email">{{ "Enter Email" }}</label>
+                <div class="col-sm-10">
+                  <input type="text" name="email" value="{{ email }}" placeholder="{{ "example@dom.com" }}" id="input-email" class="form-control" />
+                  {% if error_email %}
+                  <div class="text-danger">{{ error_email }}</div>
+                  {% endif %} </div>
+              </div>
+              <div class="form-group required">
+                <label class="col-sm-2 control-label" for="input-password">{{ "Enter Password" }}</label>
+                <div class="col-sm-10">
+                  <input type="text" name="password" value="{{ password }}" placeholder="{{ tt }}" id="input-password" class="form-control" />
+                  {% if error_password %}
+                  <div class="text-danger">{{ error_password }}</div>
+                  {% endif %} </div>
               </div>
             </div>
           </div>

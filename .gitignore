@@ -10,8 +10,8 @@ image/cache/
 system/cache/
 system/logs/
 
-system/storage/
-system/storageaerlfv5y80xy
+# system/storage/
+system/storagefosh4ztkpxww
 
 # vQmod log files
 vqmod/logs/*
@@ -19,4 +19,4 @@ vqmod/logs/*
 vqmod/vqcache/*
 vqmod/checked.cache
 vqmod/mods.cache
-/system/storageaerlfv5y80xy
+/system/storagefosh4ztkpxww

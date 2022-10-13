@@ -1,18 +1,22 @@
 <?php
-class ControllerUserApi extends Controller {
+class ControllerUserApi extends Controller
+{
 	private $error = array();
 
-	public function index() {
+	public function index()
+	{
 		$this->load->language('user/api');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		$this->load->model('user/api');
+		$this->load->model('shiprocket/auth');
 
 		$this->getList();
 	}
 
-	public function add() {
+	public function add()
+	{
 		$this->load->language('user/api');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -44,15 +48,22 @@ class ControllerUserApi extends Controller {
 		$this->getForm();
 	}
 
-	public function edit() {
+	public function edit()
+	{
 		$this->load->language('user/api');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		$this->load->model('user/api');
+		$this->load->model('shiprocket/auth');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_user_api->editApi($this->request->get['api_id'], $this->request->post);
+
+			$this->model_shiprocket_auth->shipAuthCredential($this->request->post);
+			// echo "<pre>";
+			// print_r($this->request->post);
+			// exit;
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -76,7 +87,8 @@ class ControllerUserApi extends Controller {
 		$this->getForm();
 	}
 
-	public function delete() {
+	public function delete()
+	{
 		$this->load->language('user/api');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -110,7 +122,8 @@ class ControllerUserApi extends Controller {
 		$this->getList();
 	}
 
-	protected function getList() {
+	protected function getList()
+	{
 		if (isset($this->request->get['sort'])) {
 			$sort = $this->request->get['sort'];
 		} else {
@@ -168,6 +181,11 @@ class ControllerUserApi extends Controller {
 		);
 
 		$user_total = $this->model_user_api->getTotalApis();
+
+
+		
+		$data['email'] = $this->model_shiprocket_auth->shipGetAuthCredential()['email'];
+		$data['password'] = $this->model_shiprocket_auth->shipGetAuthCredential()['password'];
 
 		$results = $this->model_user_api->getApis($filter_data);
 
@@ -245,14 +263,15 @@ class ControllerUserApi extends Controller {
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
-
+		
 		$this->response->setOutput($this->load->view('user/api_list', $data));
 	}
 
-	protected function getForm() {
+	protected function getForm()
+	{
 		$data['text_form'] = !isset($this->request->get['api_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
 		$data['text_ip'] = sprintf($this->language->get('text_ip'), $this->request->server['REMOTE_ADDR']);
-		
+
 		$data['user_token'] = $this->session->data['user_token'];
 
 		if (isset($this->error['warning'])) {
@@ -272,7 +291,20 @@ class ControllerUserApi extends Controller {
 		} else {
 			$data['error_key'] = '';
 		}
-		
+
+		if (isset($this->error['email'])) {
+			$data['error_email'] = $this->error['email'];
+		} else {
+			$data['error_email'] = '';
+		}
+
+		if (isset($this->error['password'])) {
+			$data['error_password'] = $this->error['password'];
+		} else {
+			$data['error_password'] = '';
+		}
+
+
 		$url = '';
 
 		if (isset($this->request->get['sort'])) {
@@ -343,13 +375,13 @@ class ControllerUserApi extends Controller {
 		} else {
 			$data['api_ips'] = array();
 		}
-		
+
 		// Session
 		$data['api_sessions'] = array();
-		
+
 		if (isset($this->request->get['api_id'])) {
 			$results = $this->model_user_api->getApiSessions($this->request->get['api_id']);
-			
+
 			foreach ($results as $result) {
 				$data['api_sessions'][] = array(
 					'api_session_id' => $result['api_session_id'],
@@ -360,15 +392,21 @@ class ControllerUserApi extends Controller {
 				);
 			}
 		}
-		
+		$this->load->model('shiprocket/auth');
+		$data['email'] = $this->model_shiprocket_auth->shipGetAuthCredential()['email'];
+		$data['password'] = $this->model_shiprocket_auth->shipGetAuthCredential()['password'];
+
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
-
+		// echo "<pre>";
+		// print_r($this->request->post);
+		// exit;
 		$this->response->setOutput($this->load->view('user/api_form', $data));
 	}
 
-	protected function validateForm() {
+	protected function validateForm()
+	{
 		if (!$this->user->hasPermission('modify', 'user/user')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
@@ -380,15 +418,23 @@ class ControllerUserApi extends Controller {
 		if ((utf8_strlen($this->request->post['key']) < 64) || (utf8_strlen($this->request->post['key']) > 256)) {
 			$this->error['key'] = $this->language->get('error_key');
 		}
-		
+
 		if (!isset($this->error['warning']) && !isset($this->request->post['api_ip'])) {
 			$this->error['warning'] = $this->language->get('error_ip');
+		}
+
+		if ((utf8_strlen(trim($this->request->post['email'])) < 3) || (utf8_strlen(trim($this->request->post['email'])) > 80)) {
+			$this->error['email'] = "Email must be requird!";
+		}
+		if ((utf8_strlen(trim($this->request->post['password'])) < 3) || (utf8_strlen(trim($this->request->post['password'])) > 200)) {
+			$this->error['password'] = "Password must be requird!";
 		}
 
 		return !$this->error;
 	}
 
-	protected function validateDelete() {
+	protected function validateDelete()
+	{
 		if (!$this->user->hasPermission('modify', 'user/api')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
@@ -396,7 +442,8 @@ class ControllerUserApi extends Controller {
 		return !$this->error;
 	}
 
-	public function deleteSession() {
+	public function deleteSession()
+	{
 		$this->load->language('user/api');
 
 		$json = array();
@@ -413,5 +460,5 @@ class ControllerUserApi extends Controller {
 
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
-	}	
+	}
 }
