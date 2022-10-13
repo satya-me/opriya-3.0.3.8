@@ -1,4 +1,4 @@
-<nav id="column-left">
+<nav id="column-left" class="colm_left">
   <div id="navigation"><span class="fa fa-bars"></span> {{ text_navigation }}</div>
   <ul id="menu">
     {% set i = 0 %}
@@ -43,7 +43,7 @@
     {% set i = i + 1 %}
     {% endfor %}
   </ul>
-  <div id="stats">
+  <div id="stats" style="display: none">
     <ul>
       <li>
         <div>{{ text_complete_status }} <span class="pull-right">{{ complete_status }}%</span></div>

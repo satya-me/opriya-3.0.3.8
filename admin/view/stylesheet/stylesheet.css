@@ -233,7 +233,7 @@ a:hover, a:focus {
     text-transform: uppercase;
     padding: 15px 15px 15px 15px;
     color: #FFFFFF;
-    background: #19222E;
+    background: #f0932b;
     display: block;
 }
 
@@ -253,7 +253,7 @@ a:hover, a:focus {
     display: block;
     padding: 10px;
     cursor: pointer;
-    border-bottom: 0px solid #515151;
+    border-bottom: 0px solid #fcfcfc;
 }
 
 #menu li a.parent:after {
@@ -273,18 +273,18 @@ a:hover, a:focus {
 /* 1st lvl */
 #menu > li {
     position: relative;
-    border-bottom: 1px solid #2b3642;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.303);
 }
 
 #menu > li > a {
     font-size: 14px;
-    color: #b3cbdd;
+    color: #ffffff;
     padding-left: 20px;
-    border-bottom: 0px solid #585858;
+    border-bottom: 0px solid #ffffff;
 }
 
 #menu > li > a:hover {
-    background-color: #444444;
+    background-color: #ffbe76;
 }
 
 #menu > li > a > i {
@@ -294,17 +294,17 @@ a:hover, a:focus {
 }
 
 #menu > li.active > a {
-    color: #0b91d2;
-    background-color: #171b21;
+    color: #000;
+    background-color: #ffbe76;
 }
 
 #menu > li > ul {
-    background-color: #293141;
+    background-color: #ffbe76;
 }
 
 /* 2nd lvl */
 #menu li li a {
-    color: #7f8a9b;
+    color: #000;
 }
 
 #menu li li a:before {
@@ -322,12 +322,12 @@ a:hover, a:focus {
 
 #menu li li a:hover {
     color: #FFFFFF;
-    background-color: #242d37;
+    background-color: rgba(240, 148, 43, 0.553);
 }
 
 #menu li li.active > a {
-    color: #0b91d2;
-    background-color: #242d37;
+    color: #000;
+    background-color: #f0932b;
 }
 
 #menu li ul a {
@@ -574,7 +574,7 @@ input[type="checkbox"]:checked::after, .checkbox input[type="checkbox"]:checked:
 }
 
 .tile-primary {
-    background-color: #1b80c2;
+    /* background-color: #1b80c2; */
 }
 
 .tile-success {
@@ -600,7 +600,7 @@ input[type="checkbox"]:checked::after, .checkbox input[type="checkbox"]:checked:
 .tile-heading {
     padding: 5px 8px;
     text-transform: uppercase;
-    color: #FFF;
+    color: #fff;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, .4);
     background-color: rgba(255, 255, 255, 0.1);
 }
@@ -1015,4 +1015,37 @@ html[dir="rtl"] .text-right {
     html[dir="rtl"] .navbar-right {
         float: left !important;
     }
+}
+
+
+
+.colm_left{
+    background: #f0932b!important;
+}
+
+.btn-info,.btn-primary{
+    background: #686de0!important; 
+    border: none!important;
+    outline: none;
+}
+
+.btn-danger{
+    background: #ff9f43;
+    border: none!important;
+    outline: none;
+}
+
+
+.color_carda{
+background: #a29bfe;
+}
+.color_cardb{
+    background: #fab1a0;
+}
+.color_cardc{
+    background: #74b9ff;
+}
+
+.color_cardd{
+    background: #00cec9;
 }
