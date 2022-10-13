@@ -233,7 +233,7 @@ a:hover, a:focus {
     text-transform: uppercase;
     padding: 15px 15px 15px 15px;
     color: #FFFFFF;
-    background: #f0932b;
+    background: #5f27cd;
     display: block;
 }
 
@@ -284,7 +284,7 @@ a:hover, a:focus {
 }
 
 #menu > li > a:hover {
-    background-color: #ffbe76;
+    background-color: #54a0ff;
 }
 
 #menu > li > a > i {
@@ -294,17 +294,17 @@ a:hover, a:focus {
 }
 
 #menu > li.active > a {
-    color: #000;
-    background-color: #ffbe76;
+    color: #fff;
+    background-color: #54a0ff;
 }
 
 #menu > li > ul {
-    background-color: #ffbe76;
+    background-color: #54a0ff;
 }
 
 /* 2nd lvl */
 #menu li li a {
-    color: #000;
+    color: #fff;
 }
 
 #menu li li a:before {
@@ -322,12 +322,12 @@ a:hover, a:focus {
 
 #menu li li a:hover {
     color: #FFFFFF;
-    background-color: rgba(240, 148, 43, 0.553);
+    background-color: #5f27cd;
 }
 
 #menu li li.active > a {
-    color: #000;
-    background-color: #f0932b;
+    color: #fff;
+    background-color: #54a0ff;
 }
 
 #menu li ul a {
@@ -541,9 +541,9 @@ input[type="checkbox"]:checked::after, .checkbox input[type="checkbox"]:checked:
 }
 
 .panel-default .panel-heading {
-    color: #4c4d5a;
+    color: #fff;
     border-color: #dcdcdc;
-    background: #f6f6f6;
+    background: #54a0ff;
     text-shadow: 0 -1px 0 rgba(50, 50, 50, 0);
 }
 
@@ -601,8 +601,8 @@ input[type="checkbox"]:checked::after, .checkbox input[type="checkbox"]:checked:
     padding: 5px 8px;
     text-transform: uppercase;
     color: #fff;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, .4);
-    background-color: rgba(255, 255, 255, 0.1);
+
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .tile .tile-heading .pull-right {
@@ -768,7 +768,7 @@ input[type="checkbox"]:checked::after, .checkbox input[type="checkbox"]:checked:
 }
 
 #extension-list .extension-name p {
-    color: #000;
+    color: #fff;
     margin-bottom: 0;
     font-weight: 600;
 }
@@ -783,7 +783,7 @@ input[type="checkbox"]:checked::after, .checkbox input[type="checkbox"]:checked:
 }
 
 #extension-list .extension-name h4 a, #extension-list .extension-name p a {
-    color: #000;
+    color: #fff;
 }
 
 #extension-list .extension-name + div > .row {
@@ -841,7 +841,7 @@ input[type="checkbox"]:checked::after, .checkbox input[type="checkbox"]:checked:
 }
 
 #marketplace-extension-info #buy #price {
-    color: #000;
+    color: #fff;
     font-size: 20px;
     padding-top: 15px;
     padding-bottom: 5px;
@@ -1020,7 +1020,7 @@ html[dir="rtl"] .text-right {
 
 
 .colm_left{
-    background: #f0932b!important;
+    background: #2b66f0!important;
 }
 
 .btn-info,.btn-primary{
