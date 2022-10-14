@@ -131,13 +131,13 @@ class ControllerCommonColumnLeft extends Controller {
 			// Extension
 			$marketplace = array();
 
-			if ($this->user->hasPermission('access', 'marketplace/marketplace')) {
-				$marketplace[] = array(
-					'name'	   => $this->language->get('text_marketplace'),
-					'href'     => $this->url->link('marketplace/marketplace', 'user_token=' . $this->session->data['user_token'], true),
-					'children' => array()
-				);
-			}
+			// if ($this->user->hasPermission('access', 'marketplace/marketplace')) {
+			// 	$marketplace[] = array(
+			// 		'name'	   => $this->language->get('text_marketplace'),
+			// 		'href'     => $this->url->link('marketplace/marketplace', 'user_token=' . $this->session->data['user_token'], true),
+			// 		'children' => array()
+			// 	);
+			// }
 
 			if ($this->user->hasPermission('access', 'marketplace/installer')) {
 				$marketplace[] = array(
@@ -192,13 +192,13 @@ class ControllerCommonColumnLeft extends Controller {
 				);
 			}
 
-			if ($this->user->hasPermission('access', 'design/theme')) {
-				$design[] = array(
-					'name'	   => $this->language->get('text_theme'),
-					'href'     => $this->url->link('design/theme', 'user_token=' . $this->session->data['user_token'], true),
-					'children' => array()
-				);
-			}
+			// if ($this->user->hasPermission('access', 'design/theme')) {
+			// 	$design[] = array(
+			// 		'name'	   => $this->language->get('text_theme'),
+			// 		'href'     => $this->url->link('design/theme', 'user_token=' . $this->session->data['user_token'], true),
+			// 		'children' => array()
+			// 	);
+			// }
 
 			if ($this->user->hasPermission('access', 'design/translation')) {
 				$design[] = array(
