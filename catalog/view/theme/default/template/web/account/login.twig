@@ -98,6 +98,10 @@
                     <div class="text-center">
                         <h2>Login</h2>
                     </div>
+                    {% if error_warning %}
+                    <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{
+                        error_warning }}</div>
+                    {% endif %}
                     <form method="post" class="login" action="{{login}}" enctype="multipart/form-data">
                         <p class="form-row form-row-wide">
                             <label for="username">
@@ -105,7 +109,8 @@
                             </label>
 
                             {# <input type="text" class="input-text" name="username" id="username" /> #}
-                            <input type="text" name="email" value placeholder="E-Mail Address" id="input-email" class="form-control">
+                            <input type="text" name="email" value placeholder="E-Mail Address" id="input-email"
+                                class="form-control">
                         </p>
 
                         <p class="form-row form-row-wide">
@@ -114,7 +119,8 @@
                             </label>
 
                             {# <input class="input-text" type="password" name="password" id="password" /> #}
-                            <input type="password" name="password" value placeholder="Password" id="input-password" class="form-control">
+                            <input type="password" name="password" value placeholder="Password" id="input-password"
+                                class="form-control">
                         </p>
 
                         <p class="form-row">
@@ -130,12 +136,15 @@
                         <p class="lost_password">
                             {# <a href="lost_password.html">Lost your password?</a> #}
                             <a href="#" onclick="go_to_forgetpass()">Forgotten Password</a>
-                            {# <a href="http://localhost/opencart-3.0.3.8/index.php?route=account/forgotten">Forgotten Password</a> #}
+                            {# <a href="http://localhost/opencart-3.0.3.8/index.php?route=account/forgotten">Forgotten
+                                Password</a> #}
                         </p>
                     </form>
                     <div class="d-flex jcc">
                         <p class="mb-0 mr-3">Don't have account ?</p>
-                        <a href="{{ register }}"><p class="mb-0 text-primary ml-3 link">Create account</p></a>
+                        <a href="{{ register }}">
+                            <p class="mb-0 text-primary ml-3 link">Create account</p>
+                        </a>
                     </div>
                 </div>
 
@@ -176,13 +185,14 @@
                         <h2>Forget Password</h2>
                     </div>
 
-                    <form action="{{ forgotten }}" method="post" enctype="multipart/form-data" class="register" >
+                    <form action="{{ forgotten }}" method="post" enctype="multipart/form-data" class="register">
                         <p class="form-row form-row-wide">
                             <label for="reg_email">
                                 Email address <span class="required">*</span>
                             </label>
 
-                            <input type="text" name="email" value="{{ email }}" placeholder="{{ entry_email }}" id="input-email" class="input-text" />
+                            <input type="text" name="email" value="{{ email }}" placeholder="{{ entry_email }}"
+                                id="input-email" class="input-text" />
                         </p>
 
                         <p class="form-row">
