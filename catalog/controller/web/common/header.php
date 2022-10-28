@@ -80,13 +80,6 @@ class ControllerWebCommonHeader extends Controller
         $data['search'] = $this->load->controller('web/common/search');
         $data['cart'] = $this->load->controller('web/common/cart');
 
-
-        $this->load->model('shiprocket/auth');
-        $token = ShipLoginAuth($this->model_shiprocket_auth->shipGetAuthCredential());
-        $data['auth'] = $this->load->controller('web/shiprocket/auth',$token);
-        // print_r($data['auth']);
-        // exit;
-
         $menu = $this->load->controller('web/common/menu');
         $data['menu'] = $menu['categories'];
 

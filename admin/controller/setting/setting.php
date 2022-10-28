@@ -12,6 +12,10 @@ class ControllerSettingSetting extends Controller {
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			$this->model_setting_setting->editSetting('config', $this->request->post);
 
+			// echo "<pre>";
+			// print_r($this->model_setting_setting->editSetting('config', $this->request->post));
+			// exit;
+
 			if ($this->config->get('config_currency_auto')) {
 				$this->load->model('localisation/currency');
 
@@ -45,6 +49,13 @@ class ControllerSettingSetting extends Controller {
 			$data['error_address'] = $this->error['address'];
 		} else {
 			$data['error_address'] = '';
+		}
+
+		// config_zipcode
+		if (isset($this->error['error_zipcode'])) {
+			$data['error_zipcode'] = $this->error['error_zipcode'];
+		} else {
+			$data['error_zipcode'] = '';
 		}
 
 		if (isset($this->error['email'])) {
@@ -927,6 +938,11 @@ class ControllerSettingSetting extends Controller {
 
 		if ((utf8_strlen($this->request->post['config_address']) < 3) || (utf8_strlen($this->request->post['config_address']) > 256)) {
 			$this->error['address'] = $this->language->get('error_address');
+		}
+
+		// satya
+		if ((utf8_strlen($this->request->post['config_zipcode']) < 3) || (utf8_strlen($this->request->post['config_zipcode']) > 256)) {
+			$this->error['error_zipcode'] = "Zip code required!";
 		}
 
 		if ((utf8_strlen($this->request->post['config_email']) > 96) || !filter_var($this->request->post['config_email'], FILTER_VALIDATE_EMAIL)) {

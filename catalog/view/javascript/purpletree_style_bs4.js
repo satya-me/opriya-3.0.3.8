@@ -1,6 +1,5 @@
 // Image Manager
 	$(document).on('click', 'a[data-toggle=\'image\']', function(e) {
-		console.log("FT");
 		var $element = $(this);
 		var $popover = $element.data('bs.popover'); // element has bs popover?
 		

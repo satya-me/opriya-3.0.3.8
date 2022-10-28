@@ -17,6 +17,14 @@ class ModelSettingSetting extends Model {
 	}
 
 	public function editSetting($code, $data, $store_id = 0) {
+		// echo "code: ".$code;
+		// echo "<br>-------<br>";
+		// echo "store_id: ".$store_id;
+		// echo "<br>-------<br>";
+
+		// return;
+
+		// http://localhost/GIT/opriya-3.0.3.8/admin/index.php?route=setting/setting&user_token=QTPrMiC9Bi0YrUxZpBfmrfSdMCX22KNW (For Zip code field)
 		$this->db->query("DELETE FROM `" . DB_PREFIX . "setting` WHERE store_id = '" . (int)$store_id . "' AND `code` = '" . $this->db->escape($code) . "'");
 
 		foreach ($data as $key => $value) {

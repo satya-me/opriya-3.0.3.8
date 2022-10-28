@@ -69,6 +69,9 @@ class ControllerCustomerCustomer extends Controller {
 	}
 
 	public function edit() {
+		// echo "<pre>";
+		// print_r($this->request);
+		// exit;
 		$this->load->language('customer/customer');
 
 		$this->document->setTitle($this->language->get('heading_title'));

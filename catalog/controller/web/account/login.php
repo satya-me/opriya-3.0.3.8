@@ -114,6 +114,7 @@ class ControllerWebAccountLogin extends Controller {
 			$data['error_warning'] = '';
 		}
 
+		$data['home'] = $this->url->link('web/common/home');
 		$data['action'] = $this->url->link('web/account/login', '', true);
 		$data['register'] = $this->url->link('web/account/register', '', true);
 		$data['forgotten'] = $this->url->link('web/account/forgotten', '', true);

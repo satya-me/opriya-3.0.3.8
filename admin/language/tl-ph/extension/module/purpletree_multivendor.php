@@ -138,5 +138,5 @@ $_['text_default_currency_for_paypal'] = "Default na Pera para sa PayPal";
 $_['entry_seller_login'] = "Ipakita ang Link ng Nagbebenta / Nagbebenta ng Panel ng Nagbebenta";
 // new string
 $_['text_purpletreeshipping_type'] = "Uri ng Pagpapadala ng Purpletree";
-$_['text_purpletreeshipping'] = "Pagpapadala ng Kodigo ng Purpletree Zip";
-$_['text_purpletreeshipping_geozone'] = "Pagpapadala ng Purpletree Geo Zone";
+  $_['text_purpletreeshipping'] = "Pagpapadala ng Kodigo ng Purpletree Zip";
+  $_['text_purpletreeshipping_geozone'] = "Pagpapadala ng Purpletree Geo Zone";

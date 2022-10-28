@@ -8,17 +8,17 @@ class ModelExtensionPurpletreeMultivendorSellerenquiries extends Model {
 		
 		public function getSellerMessage($data=array()){
 			$sql = "SELECT * FROM " . DB_PREFIX . "purpletree_vendor_enquiries WHERE seller_id='".(int)$data['seller_id']."'";
-			$sql.="ORDER BY created_at ASC";
+			$sql.="ORDER BY created_at DESC";
 			if (isset($data['start']) || isset($data['limit'])) {
 				if ($data['start'] < 0) {
 					$data['start'] = 0;
 				}
 				
-				// if ($data['limit'] < 1) {
-				// 	$data['limit'] = 20;
-				// }
+				if ($data['limit'] < 1) {
+					$data['limit'] = 20;
+				}
 				
-				//$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
+				$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 			}
 			$query = $this->db->query($sql);
 			if($query->num_rows>0){

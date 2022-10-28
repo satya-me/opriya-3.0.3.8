@@ -5,13 +5,14 @@ class ControllerWebExtensionAccountPurpletreeMultivendorSellerregister extends C
 
     public function index()
     {
+
         if ($this->request->server['HTTPS']) {
-			$server = $this->config->get('config_ssl');
-		} else {
-			$server = $this->config->get('config_url');
-		}
-		$data['base'] = $server;
-        
+            $server = $this->config->get('config_ssl');
+        } else {
+            $server = $this->config->get('config_url');
+        }
+        $data['base'] = $server;
+
         $livecheck = 1;
         if (!$this->customer->validateSeller($livecheck)) {
             $this->load->language('purpletree_multivendor/ptsmultivendor');
@@ -40,6 +41,7 @@ class ControllerWebExtensionAccountPurpletreeMultivendorSellerregister extends C
                 }
             }
         }
+        
         $this->load->model('extension/purpletree_multivendor/dashboard');
 
         $this->model_extension_purpletree_multivendor_dashboard->checkSellerApproval();
@@ -69,6 +71,27 @@ class ControllerWebExtensionAccountPurpletreeMultivendorSellerregister extends C
             } else {
                 $customer_id = $this->model_account_customer->addCustomer($this->request->post);
                 $emaildata = $this->request->post;
+
+                // Add pickup_location in shiprocket
+                $this->load->model('shiprocket/token');
+                $token = $this->model_shiprocket_token->GetToken();
+
+
+                $payloads['token'] = $token;
+                $payloads['data'] = $this->request->post;
+
+                $this->load->model('shiprocket/pickup');
+                $PK['customer_id'] = $customer_id;
+                $PK['pickup_location'] = $payloads['data']['store_phone'] . '-' . $payloads['data']['store_name'];
+                $pickup = $this->model_shiprocket_pickup->AddShip($PK);
+
+                if ($this->request->post) {
+                    # code...
+                    $ty = $this->load->controller('web/shiprocket/create_pickup', $payloads);
+                    // echo "<pre>";
+                    // print_r($ty);
+                }
+                // exit;
             }
             $store_logo = '';
             $store_banner = '';
@@ -90,13 +113,13 @@ class ControllerWebExtensionAccountPurpletreeMultivendorSellerregister extends C
                             move_uploaded_file($_FILES['upload_file']['tmp_name'], $directory . '/' . $file);
                         }
                     }
-
                 }
             }
 
             if (!is_dir($path)) {
                 @mkdir($path, 0777);
             }
+
             if (is_dir($path)) {
                 if (isset($_FILES['store_logo']['name'])) {
                     $allowed_file = array('gif', 'png', 'jpg');
@@ -111,7 +134,6 @@ class ControllerWebExtensionAccountPurpletreeMultivendorSellerregister extends C
                             move_uploaded_file($_FILES['store_logo']['tmp_name'], $directory . '/' . $file);
                         }
                     }
-
                 }
             }
             if (is_dir($path)) {
@@ -127,8 +149,37 @@ class ControllerWebExtensionAccountPurpletreeMultivendorSellerregister extends C
                         move_uploaded_file($_FILES['store_banner']['tmp_name'], $directory . '/' . $file);
                     }
                 }
-
             }
+            if (is_dir($path)) {
+
+                $allowed_file = array('gif', 'png', 'jpg');
+                $filename = basename(preg_replace('/[^a-zA-Z0-9\.\-\s+]/', '', html_entity_decode($_FILES['pan_doc']['name'], ENT_QUOTES, 'UTF-8')));
+                $extension = pathinfo($filename, PATHINFO_EXTENSION);
+                if ($filename != '') {
+                    if (in_array($extension, $allowed_file)) {
+                        $file = md5(mt_rand()) . '-' . $filename;
+                        $directory = $path;
+                        $pan_doc = 'catalog/Seller_' . $customer_id . '/' . $file;
+                        move_uploaded_file($_FILES['pan_doc']['tmp_name'], $directory . '/' . $file);
+                    }
+                }
+            }
+            if (is_dir($path)) {
+
+                $allowed_file = array('gif', 'png', 'jpg');
+                $filename = basename(preg_replace('/[^a-zA-Z0-9\.\-\s+]/', '', html_entity_decode($_FILES['msme_crt_doc']['name'], ENT_QUOTES, 'UTF-8')));
+                $extension = pathinfo($filename, PATHINFO_EXTENSION);
+                if ($filename != '') {
+                    if (in_array($extension, $allowed_file)) {
+                        $file = md5(mt_rand()) . '-' . $filename;
+                        $directory = $path;
+                        $msme_crt_doc = 'catalog/Seller_' . $customer_id . '/' . $file;
+                        move_uploaded_file($_FILES['msme_crt_doc']['tmp_name'], $directory . '/' . $file);
+                    }
+                }
+            }
+
+
 
             $store_name = trim($this->request->post['store_name']);
             $this->load->model('extension/purpletree_multivendor/vendor');
@@ -139,7 +190,7 @@ class ControllerWebExtensionAccountPurpletreeMultivendorSellerregister extends C
             }
             $store_id = $this->model_extension_purpletree_multivendor_vendor->getStoreId($customer_id);
             $this->model_extension_purpletree_multivendor_vendor->editStore($store_id, $this->request->post, $file);
-            $this->model_extension_purpletree_multivendor_vendor->editStoreImage($store_id, $store_logo, $store_banner);
+            $this->model_extension_purpletree_multivendor_vendor->editStoreImage($store_id, $store_logo, $store_banner, $pan_doc, $msme_crt_doc);
 
             ////////// Start register mail for seller////////////
             $this->load->language('mail/register');
@@ -161,7 +212,8 @@ class ControllerWebExtensionAccountPurpletreeMultivendorSellerregister extends C
                     $messtemplatefromdb = $register_template['new_message'];
                     $replacevarsub = array('_ADMINSTORE_' => $store_name);
                     $email_subject = $this->model_extension_purpletree_multivendor_vendor->getmsgfromarray($replacevarsub, $subtemplatefromdb);
-                    $replacevar = array('_ADMINSTORE_' => $store_name,
+                    $replacevar = array(
+                        '_ADMINSTORE_' => $store_name,
                         '_ADMINSTOREURL_' => $login_url,
                     );
                     $email_message = $this->model_extension_purpletree_multivendor_vendor->getmsgfromarray($replacevar, $messtemplatefromdb);
@@ -177,7 +229,8 @@ class ControllerWebExtensionAccountPurpletreeMultivendorSellerregister extends C
                     $messtemplatefromdb = $register_template['new_message'];
                     $replacevarsub = array('_ADMINSTORE_' => $store_name);
                     $email_subject = $this->model_extension_purpletree_multivendor_vendor->getmsgfromarray($replacevarsub, $subtemplatefromdb);
-                    $replacevar = array('_ADMINSTORE_' => $store_name,
+                    $replacevar = array(
+                        '_ADMINSTORE_' => $store_name,
                         '_ADMINSTOREURL_' => $login_url,
                     );
                     $email_message = $this->model_extension_purpletree_multivendor_vendor->getmsgfromarray($replacevar, $messtemplatefromdb);
@@ -195,7 +248,8 @@ class ControllerWebExtensionAccountPurpletreeMultivendorSellerregister extends C
                     $messtemplatefromdb = $register_template['new_message'];
                     $replacevarsub = array('_ADMINSTORE_' => $store_name);
                     $email_subject = $this->model_extension_purpletree_multivendor_vendor->getmsgfromarray($replacevarsub, $subtemplatefromdb);
-                    $replacevar = array('_ADMINSTORE_' => $store_name,
+                    $replacevar = array(
+                        '_ADMINSTORE_' => $store_name,
                         '_ADMINSTOREURL_' => $login_url,
                     );
                     $email_message = $this->model_extension_purpletree_multivendor_vendor->getmsgfromarray($replacevar, $messtemplatefromdb);
@@ -210,13 +264,13 @@ class ControllerWebExtensionAccountPurpletreeMultivendorSellerregister extends C
                     $messtemplatefromdb = $register_template['new_message'];
                     $replacevarsub = array('_ADMINSTORE_' => $store_name);
                     $email_subject = $this->model_extension_purpletree_multivendor_vendor->getmsgfromarray($replacevarsub, $subtemplatefromdb);
-                    $replacevar = array('_ADMINSTORE_' => $store_name,
+                    $replacevar = array(
+                        '_ADMINSTORE_' => $store_name,
                         '_ADMINSTOREURL_' => $login_url,
                     );
                     $email_message = $this->model_extension_purpletree_multivendor_vendor->getmsgfromarray($replacevar, $messtemplatefromdb);
                     $reciver = $emaildata['email'];
                     $this->model_extension_purpletree_multivendor_vendor->ptsSendMail($reciver, $email_subject, $email_message);
-
                 }
             }
             //////End register mail for seller////////////
@@ -259,7 +313,8 @@ class ControllerWebExtensionAccountPurpletreeMultivendorSellerregister extends C
                     $register_template = $this->model_extension_purpletree_multivendor_vendor->getSelleRegisterEmailTemplate($email_code);
                     $messtemplatefromdb = $register_template['new_message'];
                     $email_subject = $register_template['new_subject'];
-                    $replacevar = array('_SELLERFIRSTNAME_' => $data['firstname'],
+                    $replacevar = array(
+                        '_SELLERFIRSTNAME_' => $data['firstname'],
                         '_SELLERLASTNAME_' => $data['lastname'],
                         '_CUSTOMERGROUP_' => $data['customer_group'],
                         '_SELLEREMAIL_' => $emaildata['email'],
@@ -272,7 +327,8 @@ class ControllerWebExtensionAccountPurpletreeMultivendorSellerregister extends C
                     $register_template = $this->model_extension_purpletree_multivendor_vendor->getSelleRegisterEmailTemplate($email_code);
                     $messtemplatefromdb = $register_template['new_message'];
                     $email_subject = $register_template['new_subject'];
-                    $replacevar = array('_SELLERFIRSTNAME_' => $data['firstname'],
+                    $replacevar = array(
+                        '_SELLERFIRSTNAME_' => $data['firstname'],
                         '_SELLERLASTNAME_' => $data['lastname'],
                         '_SELLEREMAIL_' => $emaildata['email'],
                         '_SELLERTELEPHONE_' => $emaildata['telephone'],
@@ -304,7 +360,6 @@ class ControllerWebExtensionAccountPurpletreeMultivendorSellerregister extends C
                     $this->response->redirect($this->url->link('web/extension/account/purpletree_multivendor/sellerlogin', '', true));
                 }
                 unset($this->session->data['guest']);
-
             }
             //$this->response->redirect($this->url->link('web/account/success'));
             $this->response->redirect($this->url->link('web/extension/account/purpletree_multivendor/sellerstore/becomeseller', '', true));
@@ -915,13 +970,11 @@ class ControllerWebExtensionAccountPurpletreeMultivendorSellerregister extends C
                 if ($this->config->get('module_purpletree_multivendor_multiple_subscription_plan_active')) {
 
                     $current_plan_end_date = ($current_plan_start_date1['new_end_date'] != '0000-00-00 00:00:00') ? date('m/d/Y H:i:s', strtotime($current_plan_start_date1['new_end_date'])) : date('m/d/Y H:i:s', strtotime($current_plan_start_date1['start_date'] . ' + ' . $validity . ' days'));
-
                 } else {
                     $current_plan_end_date = ($current_plan_start_date1['end_date'] != '0000-00-00 00:00:00') ? date('m/d/Y H:i:s', strtotime($current_plan_start_date1['end_date'])) : date('m/d/Y H:i:s', strtotime($current_plan_start_date1['start_date'] . ' + ' . $validity . ' days'));
                 }
 
                 $data['start_date'] = date('Y-m-d H:i:s', strtotime($current_plan_end_date));
-
             } else {
                 $data['start_date'] = date('Y-m-d H:i:s');
             }
@@ -1096,7 +1149,8 @@ class ControllerWebExtensionAccountPurpletreeMultivendorSellerregister extends C
             $subtemplatefromdb = $register_template['new_subject'];
             $messtemplatefromdb = $register_template['new_message'];
             $email_subject = $subtemplatefromdb;
-            $replacevar = array('_SELLER_NAME_' => $seller_name,
+            $replacevar = array(
+                '_SELLER_NAME_' => $seller_name,
                 '_SELLER_EMAIL_' => $customer['email'],
                 '_PLAN_NAME_' => $result['plan_name'],
                 '_NOOFSUBPRODUCT_' => $result['no_of_product'],
@@ -1122,7 +1176,8 @@ class ControllerWebExtensionAccountPurpletreeMultivendorSellerregister extends C
             $subtemplatefromdb = $register_template['new_subject'];
             $messtemplatefromdb = $register_template['new_message'];
             $email_subject = $subtemplatefromdb;
-            $replacevar = array('_SELLER_NAME_' => $seller_name,
+            $replacevar = array(
+                '_SELLER_NAME_' => $seller_name,
                 '_SELLER_EMAIL_' => $customer['email'],
                 '_PLAN_NAME_' => $result['plan_name'],
                 '_NOOFSUBPRODUCT_' => $result['no_of_product'],
@@ -1140,5 +1195,4 @@ class ControllerWebExtensionAccountPurpletreeMultivendorSellerregister extends C
         }
         //$this->getplan();
     }
-
 }

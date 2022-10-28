@@ -36,6 +36,7 @@ class ControllerWebAccountRegister extends Controller
             $this->response->redirect($this->url->link('web/account/success'));
         }
 
+        $data['home'] = $this->url->link('web/common/home');
         $data['breadcrumbs'] = array();
 
         $data['breadcrumbs'][] = array(

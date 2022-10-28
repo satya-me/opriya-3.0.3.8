@@ -92,6 +92,9 @@ class ControllerWebCheckoutCheckout extends Controller {
 		$data['footer'] = $this->load->controller('web/common/footer');
 		$data['header'] = $this->load->controller('web/common/header');
 
+		// echo "<pre>";
+		// print_r($data);
+		// exit;
 		$this->response->setOutput($this->load->view('web/checkout/checkout', $data));
 	}
 

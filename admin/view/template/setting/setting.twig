@@ -115,6 +115,14 @@
                   <div class="text-danger">{{ error_address }}</div>
                   {% endif %} </div>
               </div>
+              <div class="form-group required">
+                <label class="col-sm-2 control-label" for="input-zipcode">{{ 'Zip Code' }}</label>
+                <div class="col-sm-10">
+                  <input type="text" name="config_zipcode" value="{{ config_zipcode }}" placeholder="{{ 'Enter Zip Code' }}" id="input-zipcode" class="form-control" />
+                  {% if error_zipcode %}
+                  <div class="text-danger">{{ error_zipcode }}</div>
+                  {% endif %} </div>
+              </div>
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-geocode"><span data-toggle="tooltip" data-container="#tab-general" title="{{ help_geocode }}">{{ entry_geocode }}</span></label>
                 <div class="col-sm-10">

@@ -23,7 +23,6 @@ function ShipLoginAuth($data)
         }',
         CURLOPT_HTTPHEADER => array(
             'Content-Type: application/json',
-            // 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMwMDU2ODYsImlzcyI6Imh0dHBzOi8vYXBpdjIuc2hpcHJvY2tldC5pbi92MS9leHRlcm5hbC9hdXRoL2xvZ2luIiwiaWF0IjoxNjY1MTUzMDQxLCJleHAiOjE2NjYwMTcwNDEsIm5iZiI6MTY2NTE1MzA0MSwianRpIjoiZmFqTUNPZTZLTzllTUpVNCJ9.k_arYVOEMIuBAHNoz1A47v6IRCCdPT1gQh2Wb8B8hZ8'
         ),
     ));
 

@@ -413,7 +413,7 @@
 			$('#productidinform').val(product_id);
 			var is_catfeatu = $(this).prop('checked');
 			$.ajax({
-				url: 'index.php?route=web/extension/account/purpletree_multivendor/sellerproduct/check_category_featured_product_subscription_plan&value=' +  is_catfeatu + '&product_id='+ product_id,
+				url: 'index.php?route=extension/account/purpletree_multivendor/sellerproduct/check_category_featured_product_subscription_plan&value=' +  is_catfeatu + '&product_id='+ product_id,
 				dataType: 'json',
 				success: function(json) {
 					if(json.status == 'success') {
@@ -433,7 +433,7 @@
 			var product_id = $(this).attr('product-id');
 			$('#productidinform').val(product_id);
 			$.ajax({
-				url: 'index.php?route=web/extension/account/purpletree_multivendor/sellerproduct/remove_category_featured_product_subscription_plan&product_id='+ product_id,
+				url: 'index.php?route=extension/account/purpletree_multivendor/sellerproduct/remove_category_featured_product_subscription_plan&product_id='+ product_id,
 				dataType: 'json',
 				success: function(json) {
 					if(json.status == 'success') {
@@ -460,7 +460,7 @@
 			$('#productidinform').val(product_id);
 			var is_featured = $(this).prop('checked');
 			$.ajax({
-				url: 'index.php?route=web/extension/account/purpletree_multivendor/sellerproduct/check_featured_product_subscription_plan&value=' +  is_featured + '&product_id='+ product_id,
+				url: 'index.php?route=extension/account/purpletree_multivendor/sellerproduct/check_featured_product_subscription_plan&value=' +  is_featured + '&product_id='+ product_id,
 				dataType: 'json',
 				success: function(json) {
 					if(json.status == 'success') {
@@ -480,7 +480,7 @@
 			var product_id = $(this).attr('product-id');
 			$('#productidinform').val(product_id);
 			$.ajax({
-				url: 'index.php?route=web/extension/account/purpletree_multivendor/sellerproduct/remove_featured_product_subscription_plan&product_id='+ product_id,
+				url: 'index.php?route=extension/account/purpletree_multivendor/sellerproduct/remove_featured_product_subscription_plan&product_id='+ product_id,
 				dataType: 'json',
 				success: function(json) {
 					if(json.status == 'success') {
@@ -509,7 +509,7 @@
 		if($('.planidcheck').is(':checked')) {
 			$.ajax({
 				type: frm.attr('method'),
-				url: 'index.php?route=web/extension/account/purpletree_multivendor/sellerproduct/add_featured_product_By_Popup',
+				url: 'index.php?route=extension/account/purpletree_multivendor/sellerproduct/add_featured_product_By_Popup',
 				data: frm.serialize(),
 				success: function (json) {
 					if(json.status == 'success') {
@@ -551,7 +551,7 @@
 		var product_id = $(this).attr('product-id');
 		var is_featured = $(this).prop('checked');
 		$.ajax({
-			url: 'index.php?route=web/extension/account/purpletree_multivendor/sellerproduct/change_is_featured&value=' +  is_featured + '&product_id='+ product_id,
+			url: 'index.php?route=extension/account/purpletree_multivendor/sellerproduct/change_is_featured&value=' +  is_featured + '&product_id='+ product_id,
 			dataType: 'json',
 			success: function(json) {
 				if(json.status == 'success') {
@@ -585,7 +585,7 @@
 		var product_id = $(this).attr('product-id');
 		var is_category_featured = $(this).prop('checked');
 		$.ajax({
-			url: 'index.php?route=web/extension/account/purpletree_multivendor/sellerproduct/change_is_category_featured&value=' +  is_category_featured + '&product_id='+ product_id,
+			url: 'index.php?route=extension/account/purpletree_multivendor/sellerproduct/change_is_category_featured&value=' +  is_category_featured + '&product_id='+ product_id,
 			dataType: 'json',
 			success: function(json) {
 				if(json.status == 'success') {
@@ -631,7 +631,7 @@
 		}
 	});
 	$('#pts-button-filter').on('click', function() {
-		var url = 'index.php?route=web/extension/account/purpletree_multivendor/sellerproduct';
+		var url = 'index.php?route=extension/account/purpletree_multivendor/sellerproduct';
 		
 		var filter_name = $('input[name=\'filter_name\']').val();
 		
@@ -670,7 +670,7 @@
 	$('input[name=\'filter_name\']').autocompletepts({
 		'source': function(request, response) {
 			$.ajax({
-				url: 'index.php?route=web/extension/account/purpletree_multivendor/sellerproduct/autocomplete&filter_name=' +  encodeURIComponent(request),
+				url: 'index.php?route=extension/account/purpletree_multivendor/sellerproduct/autocomplete&filter_name=' +  encodeURIComponent(request),
 				dataType: 'json',
 				success: function(json) {
 					response($.map(json, function(item) {
@@ -689,7 +689,7 @@
 	$('input[name=\'filter_model\']').autocompletepts({
 		'source': function(request, response) {
 			$.ajax({
-				url: 'index.php?route=web/extension/account/purpletree_multivendor/sellerproduct/autocomplete&filter_model=' +  encodeURIComponent(request),
+				url: 'index.php?route=extension/account/purpletree_multivendor/sellerproduct/autocomplete&filter_model=' +  encodeURIComponent(request),
 				dataType: 'json',
 				success: function(json) {
 					response($.map(json, function(item) {
@@ -741,7 +741,7 @@ var option_value_row = 0;
 	function quick_edit(product_id){
 	$('#quick_product_id').val(product_id);
 		$.ajax({
-				url: 'index.php?route=web/extension/account/purpletree_multivendor/sellerproduct/quickEdit&product_id=' +  product_id,
+				url: 'index.php?route=extension/account/purpletree_multivendor/sellerproduct/quickEdit&product_id=' +  product_id,
 				dataType: 'json',
 				success: function(json) {
 				$('#quick-product-price').val(json.price);
@@ -1164,7 +1164,7 @@ var option_value_row = 0;
 	$('input[name=\'option\']').autocompletepts({
 		'source': function(request, response) {
 			$.ajax({
-				url: 'index.php?route=web/extension/account/purpletree_multivendor/sellerproduct/option&filter_name=' +  encodeURIComponent(request),
+				url: 'index.php?route=extension/account/purpletree_multivendor/sellerproduct/option&filter_name=' +  encodeURIComponent(request),
 				dataType: 'json',
 				success: function(json) {
 					response($.map(json, function(item) {
@@ -1338,7 +1338,7 @@ var option_value_row = 0;
 		e.preventDefault();	
 			$.ajax({
 				type: quick_form.attr('method'),
-				url: 'index.php?route=web/extension/account/purpletree_multivendor/sellerproduct/quickSave',
+				url: 'index.php?route=extension/account/purpletree_multivendor/sellerproduct/quickSave',
 				data: quick_form.serialize(),
 				success: function (json) {
 					if(json.status == 'success') {
