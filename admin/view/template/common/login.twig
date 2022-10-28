@@ -5,172 +5,128 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
    *{
-    margin:0;
-    padding:0;
-      }
-      .login_wrapper{
-    background: url('https://static.vecteezy.com/system/resources/previews/002/037/924/original/abstract-blue-background-with-beautiful-fluid-shapes-free-vector.jpg') no-repeat center;
-    background-size: cover;
-    height: 100vh;
-    padding-top: 6rem;
+margin:0;
+padding:0;
+   }
+   .login_wrapper{
+background: url('https://static.vecteezy.com/system/resources/previews/002/037/924/original/abstract-blue-background-with-beautiful-fluid-shapes-free-vector.jpg') no-repeat center;
+background-size: cover;
+height: 100vh;
+padding-top: 6rem;
 
-    }
-    .login_form_main{
-    max-width: 500px;
-    margin: 0 auto;
-    background: #fff;
-    box-shadow: 8px 4px 13px 0px rgba(0,0,0,0.24);
-    -webkit-box-shadow: 8px 4px 13px 0px rgba(0,0,0,0.24);
-    -moz-box-shadow: 8px 4px 13px 0px rgba(0,0,0,0.24);
-    padding:1rem;
-    border-radius: 1rem;
-    }
+}
+.login_form_main{
+max-width: 500px;
+margin: 0 auto;
+background: #fff;
+box-shadow: 8px 4px 13px 0px rgba(0,0,0,0.24);
+-webkit-box-shadow: 8px 4px 13px 0px rgba(0,0,0,0.24);
+-moz-box-shadow: 8px 4px 13px 0px rgba(0,0,0,0.24);
+padding:1rem;
+border-radius: 1rem;
+}
 
-    .company_logo{
-    text-align:center;
-    margin-bottom:2rem;
-    }
+.company_logo{
+text-align:center;
+margin-bottom:2rem;
+}
 
-    .login_form h1{
-    font-family: 'Quicksand', sans-serif;
-    font-size: 2rem;
-    color: #0984e3;
-    text-align: center;
+.login_form h1{
+font-family: 'Quicksand', sans-serif;
+font-size: 2rem;
+color: #0984e3;
+text-align: center;
 
-    }
+}
 
-    .login_form p{
-    font-family: 'Quicksand', sans-serif;
-    font-size: 1rem;
-    color: #636e72;
-    text-align: center;
-    margin-top:1rem;
-    }
+.login_form p{
+font-family: 'Quicksand', sans-serif;
+font-size: 1rem;
+color: #636e72;
+text-align: center;
+margin-top:1rem;
+}
 
-    .log_form{
-    margin-top:1rem
-    }
-    .input_style2{
-    border: 1px solid #eee !important;
-    display: block;
-    width:100%;
-    height:100%;
-    background: #fff;
-    padding: 0.8rem 0.2rem;
-    border: none;
-    outline: none;
-    margin:1rem 0;
+.log_form{
+margin-top:1rem
+}
+.input_style{
+display: block;
+width:100%;
+height:100%;
+background: #fff;
+padding: 0.8rem 0.2rem;
+border: none;
+outline: none;
+margin-bottom:1rem;
 
-    }
+}
 
-    .login_form label{
-    font-size:1.1rem;
-    margin-bottom: 2rem;
-    color: #2d3436;
-    font-family: 'Quicksand', sans-serif;
-    }
+.login_form label{
+font-size:1.1rem;
+margin-bottom: 1rem;
+color: #2d3436;
+font-family: 'Quicksand', sans-serif;
+}
 
-    .bottm_form_part{
-    margin-top:2rem;
-    text-align: center;
-    }
+.bottm_form_part{
+margin-top:2rem;
+text-align: center;
+}
 
-    .login_btn{
-    display: inline-block;
-    width:200px;
-    background: #0984e3;
-    color: #fff;
-    outline: none;
-    border: none;
-    padding: 1rem;
-    margin-bottom: 1rem
-    }
+.login_btn{
+display: inline-block;
+width:200px;
+background: #0984e3;
+color: #fff;
+outline: none;
+border: none;
+padding: 1rem;
+margin-bottom: 1rem
+}
 
-    .hh{
-    text-align: center;
-    }
+.hh{
+text-align: center;
+}
 
-    .forget_password{
-    color: #0984e3;
-    font-weight: bold;
-    text-align: center;
-    }
+.forget_password{
+color: #0984e3;
+font-weight: bold;
+text-align: center;
+}
     </style>
 
     <title></title>
   </head>
   <body>
     <div class="login_wrapper">
-      <div class="login_form_main">
-        <div class="company_logo">
-          <img src="view/image/logo.png" alt="">
-        </div>
-        <div class="login_form">
-          <h1>
-            {{ text_login }}
-
-          </h1>
-          <p>
-            {{ "It's not long before you embark on this journey!" }}
-
-          </p>
-          {% if success %}
-            <div class="alert alert-success alert-dismissible">
-              <i class="fa fa-check-circle"></i>
-              {{ success }}
-              <button type="button" class="close" data-dismiss="alert">
-                &times;    
-                              
-              </button>
-            </div>
-          {% endif %}
-          {% if error_warning %}
-            <div class="alert alert-danger alert-dismissible">
-              <i class="fa fa-exclamation-circle"></i>
-              {{ error_warning }}
-              <button type="button" class="close" data-dismiss="alert">
-                &times;    
-                              
-              </button>
-            </div>
-          {% endif %}
-          <form class="log_form" action="{{ action }}" method="post" enctype="multipart/form-data">
-            <div class="input_grp">
-              <label for="input-username">
-                {{ entry_username }}
-              </label>
-              <input type="text" name="username" value="{{ username }}" placeholder="{{ entry_username }}" id="input-username" class="input_style2" />
-            </div>
-            <div class="input_grp">
-              <label for="input-password">
-                {{ entry_password }}
-              </label>
-              <input type="password" name="password" value="{{ password }}" placeholder="{{ entry_password }}" id="input-password" class="input_style2">
-            </div>
-            <div class="bottm_form_part">
-              <button class="login_btn">
-                {{ button_login }}
-              </button>
-            </div>
-            <div class="hh">
-              {% if forgotten %}
-                <a href="{{ forgotten }}" class="forget_password">
-                  {{ text_forgotten }}
-                </a>
-              {% endif %}
-            </div>
-            {% if redirect %}
-              <input type="hidden" name="redirect" value="{{ redirect }}" />
-            {% endif %}
-          </form>
-        </div>
-      </div>
+  <div class="login_form_main">
+  <div class="company_logo">
+<img src="view/image/logo.png" alt="">
+</div>
+<div class="login_form">
+<h1>Sign Up</h1>
+<p>It's not long before you embark on this journey! </p>
+  <form class="log_form">
+  <div class="input_grp">
+<label>User Name</label>
+    <input type="text" placeholder="Email or Phone Number" required  class="input_style" />
+</div>
+<div class="input_grp">
+<label>Password</label>
+    <input type="password" placeholder="Password" required class="input_style" >
+</div>
+<div class="bottm_form_part">
+    <button class="login_btn">Log In</button>
     </div>
+    <div class="hh">
+  <a href="#" class="forget_password">Forgot Password ?</a>
+</div>
+  </form>
+</div>
+  </div> 
+</div>
   </body>
 </html>
